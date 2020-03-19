@@ -10,9 +10,9 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 
 RUN apt update -y \
     # prepare for systemd \
-    && apt install -y systemd systemd-sysv \
-    && apt upgrade -y \
-    && apt install python3 python3-dev \
+    && apt-get install -y systemd systemd-sysv \
+    && apt-get upgrade -y \
+    && apt-get install python3 python3-dev -y \
     && cd /lib/systemd/system/sysinit.target.wants/ \
     && ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 \
     rm -f /lib/systemd/system/multi-user.target.wants/*
